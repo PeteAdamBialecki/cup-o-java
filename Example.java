@@ -20,7 +20,20 @@ public class Example {
             System.out.println("Chomp!");
         }
         if (dispenser.isEmpty()) {
-            System.out.print("Ate all the PEZ/n");
+            System.out.print("Ate all the PEZ\n");
+        }
+        dispenser.fill(4);
+        dispenser.fill(2);
+        while (dispenser.dispense()) {
+            System.out.println("Chomp!!");
+        }
+        try {
+            dispenser.fill(400);
+            System.out.println("This will never happen\n");
+        } catch (IllegalArgumentException iae) {
+            System.out.println("Whoa there!");
+            System.out.printf("The error was %s\n",
+                iae.getMessage());
         }
     }
 }
