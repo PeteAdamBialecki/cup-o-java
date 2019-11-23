@@ -4,12 +4,9 @@ public class Hangman {
         Game game = new Game("antidisestablishmentarianism");
         Prompter prompter = new Prompter(game);
         prompter.displayProgress();
-        boolean isHit = prompter.promptForGuess();
-        if (isHit) {
-            System.out.println("Correct!");
-        } else {
-            System.out.println("Oops, wrong.");
+        while (game.getRemainingTries() > 0) {
+            prompter.promptForGuess();
+            prompter.displayProgress();
         }
-        prompter.displayProgress();
     }
 }
