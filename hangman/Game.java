@@ -1,5 +1,5 @@
 
-class Game {
+public class Game {
     public static final int MAX_MISSES = 7;
     private String answer;
     private String hits;
@@ -9,6 +9,10 @@ class Game {
         this.answer = answer;
         hits = "";
         misses = "";
+    }
+
+    public String getAnswer() {
+        return answer;
     }
 
     private char normalizeGuess(char letter) {
@@ -22,8 +26,14 @@ class Game {
         return letter;
     }
 
-    public boolean applyGuess(char letter) {
+    public boolean applyGuess(String letters) {
+        if (letters.length() == 0) {
+            throw new IllegalArgumentException("No letter found");
+        }
+        return applyGuess(letters.charAt(0));
+    }
 
+    public boolean applyGuess(char letter) {
         letter = normalizeGuess(letter);
         boolean isHit = answer.indexOf(letter) != -1;
             if (isHit) {
@@ -48,5 +58,9 @@ class Game {
             progress += display;
        }
     return progress;
+    }
+
+    public boolean isWon() {
+        return getCurrentProgress().indexOf('-') == -1;
     }
 }
