@@ -1,0 +1,1 @@
+        clear && javac Explore.java && java Explore 
