@@ -1,5 +1,6 @@
 package com.peteadambialecki.lambdas;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 public class Main {
 
@@ -30,6 +31,12 @@ public class Main {
         List<Book> books = Books.all();
         Collections.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));
         books.forEach((book) -> System.out.println(book));
+    }
+ 
+    public static void usingMethodReferences() {
+        List<Book> books = Books.all();
+        Collections.sort(books, Comparator.comparing(Book::getTitle));
+        books.forEach(System.out::println);
     } 
 
     public static void main(String[] args) {
