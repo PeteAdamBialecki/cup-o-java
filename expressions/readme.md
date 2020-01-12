@@ -1,0 +1,1 @@
+clear && javac expressions.java && java expressions
