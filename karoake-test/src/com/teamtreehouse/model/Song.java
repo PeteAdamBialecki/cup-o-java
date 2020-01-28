@@ -1,5 +1,7 @@
 package com.teamtreehouse.model;
 
+import java.util.Objects;
+
 public class Song {
   protected String mArtist;
   protected String mTitle;
