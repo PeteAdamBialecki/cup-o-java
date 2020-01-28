@@ -1,5 +1,7 @@
 package com.teamtreehouse.model;
 
+import java.util.Objects;
+
 public class SongRequest {
     private String mSingerName;
     private Song mSong;
