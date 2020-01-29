@@ -41,7 +41,7 @@ public class Prompter {
             e.printStackTrace();
             System.exit(0);
         }
-        // TODO:csd - Print out the results that were gathered here by rendering the template
+        System.out.println(tmpl.render(results));
     }
 
     /**
@@ -60,15 +60,20 @@ public class Prompter {
         return words;
     }
 
+    public String promptForStory() throws IOException {
+        return mReader.readLine();
+    }
 
-    /**
-     * Prompts the user for the answer to the fill in the blank.  Value is guaranteed to be not in the censored words list.
-     *
-     * @param phrase The word that the user should be prompted.  eg: adjective, proper noun, name
-     * @return What the user responded
-     */
-    public String promptForWord(String phrase) {
-        // TODO:csd - Prompt the user for the response to the phrase, make sure the word is censored, loop until you get a good response.
-        return "";
+    public String promptForWord(String phrase) throws IOException {
+        System.out.printf("Please Enter your words for %s:: %n", phrase);
+        String answer = mReader.readLine();
+
+        while (mCensoredWords.contains(answer)) {
+            System.out.printf("Sorry %s is an unacceptable word%n", phrase);
+            answer = mReader.readLine();
+
+        }
+
+        return answer.trim();
     }
 }

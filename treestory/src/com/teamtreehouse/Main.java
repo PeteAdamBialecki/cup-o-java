@@ -1,5 +1,8 @@
 package com.teamtreehouse;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,14 +10,16 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        // TODO:csd - Instantiate a new Prompter object and prompt for the story template
-        String story = "Thanks __name__ for helping me out.  You are really a __adjective__ __noun__ and I owe you a __noun__.";
+        BufferedReader mReader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Make a story with the following variables name, noun and adjective! Write a fill in the blank story with an underscore on each side of the variable like __noun__ or __adjective__ or __etc__");
+        Prompter prompter = new Prompter();
+        String story = null;
+        try {
+            story = prompter.promptForStory();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Template tmpl = new Template(story);
-        // TODO:csd - Use the prompter object to have it do the prompting, censoring and outputting.  Call Prompter.run
-        List<String> fakeResults = Arrays.asList("friend", "talented", "java programmer", "high five");
-        // TODO:csd - This should really happen in the Prompter.run method, let's get these implemetation details out of the main method
-        String results = tmpl.render(fakeResults);
-        System.out.printf("Your TreeStory:%n%n%s", results);
-
+        prompter.run(tmpl);
     }
 }
