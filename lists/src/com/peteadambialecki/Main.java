@@ -19,5 +19,14 @@ public class Main {
 
         String jerome = groceryLine.get(0);
         System.out.println(jerome);
+
+        int samIndex = groceryLine.indexOf("Sam");
+        System.out.println(samIndex );
+
+        System.out.println(groceryLine.size());
+
+        for (String name : groceryLine) {
+            System.out.println(name);
+        }
     }
 }
