@@ -1,13 +1,14 @@
 package com.peteadambialecki;
 
-public class Person {
+public class Person implements Chatable {
     String name;
 
     Person(String name) {
         this.name = name;
     }
 
-    String chat() {
+    @Override
+    public String chat() {
         return "Hey there...";
     }
 }

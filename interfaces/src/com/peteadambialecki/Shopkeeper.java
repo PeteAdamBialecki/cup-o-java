@@ -6,7 +6,7 @@ public class Shopkeeper extends Person {
     }
 
     @Override
-    String chat() {
+    public String chat() {
         return "Hi, I'm a shopkeeper.";
     }
 
