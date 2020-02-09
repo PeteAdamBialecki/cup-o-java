@@ -1,6 +1,6 @@
 package com.peteadambialecki;
 
-public class Shopkeeper extends Person {
+public class Shopkeeper extends Person implements Seller {
     Shopkeeper(String name) {
         super(name);
     }
@@ -10,7 +10,8 @@ public class Shopkeeper extends Person {
         return "Hi, I'm a shopkeeper.";
     }
 
-    void sellGoods() {
+    @Override
+    public void sellGoods() {
         // TODO
     }
 }
