@@ -1,0 +1,15 @@
+.root {
+    -fx-font-family: georgia;
+    -fx-alignment: center;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+.title {
+    -fx-font-size: 80px;
+    -fx-fill: burlywood;
+}
+
+.text-field, #firstName, #labelName {
+    -fx-font-family: helvetica;
+}
