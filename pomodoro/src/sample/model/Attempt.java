@@ -11,6 +11,10 @@ public class Attempt {
         mRemainingSeconds = kind.getTotalSeconds();
     }
 
+    public Attempt(AttemptKind kind, String s) {
+
+    }
+
     public String getMessage() {
         return mMessage;
     }
