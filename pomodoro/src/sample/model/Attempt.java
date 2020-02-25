@@ -30,4 +30,8 @@ public class Attempt {
     public void setMessage(String message) {
         mMessage = message;
     }
+
+    public void tick() {
+        mRemainingSeconds--;
+    }
 }
