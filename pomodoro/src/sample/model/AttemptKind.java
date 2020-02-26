@@ -1,8 +1,9 @@
 package sample.model;
 
+
 public enum AttemptKind {
-    FOCUS(25 * 60, "Focus Time"),
-    BREAK(5 * 60, "Break Time");
+    FOCUS(3, "Focus time"),
+    BREAK(5 * 60, "Break time");
 
     private int mTotalSeconds;
     private String mDisplayName;
@@ -15,7 +16,6 @@ public enum AttemptKind {
     public int getTotalSeconds() {
         return mTotalSeconds;
     }
-
 
     public String getDisplayName() {
         return mDisplayName;

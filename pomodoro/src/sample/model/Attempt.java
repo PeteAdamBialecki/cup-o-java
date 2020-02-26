@@ -5,14 +5,14 @@ public class Attempt {
     private int mRemainingSeconds;
     private AttemptKind mKind;
 
-    public Attempt(String message, AttemptKind kind) {
-        mMessage = message;
+    public Attempt(AttemptKind kind, String message) {
         mKind = kind;
+        mMessage = message;
         mRemainingSeconds = kind.getTotalSeconds();
     }
 
-    public Attempt(AttemptKind kind, String s) {
-
+    public AttemptKind getKind() {
+        return mKind;
     }
 
     public String getMessage() {
@@ -23,15 +23,24 @@ public class Attempt {
         return mRemainingSeconds;
     }
 
-    public AttemptKind getKind() {
-        return mKind;
-    }
-
     public void setMessage(String message) {
         mMessage = message;
     }
 
     public void tick() {
         mRemainingSeconds--;
+    }
+
+    @Override
+    public String toString() {
+        return "Attempt{" +
+                "mKind=" + mKind +
+                ", mMessage='" + mMessage + '\'' +
+                ", mRemainingSeconds=" + mRemainingSeconds +
+                '}';
+    }
+
+    public void save() {
+        System.out.printf("Saving: %s %n", this);
     }
 }
