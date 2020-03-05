@@ -14,8 +14,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import javafx.scene.media.AudioClip;
 
 public class Home {
+    private final AudioClip mEnding;
     @FXML
     private VBox container;
 
@@ -32,6 +34,7 @@ public class Home {
     public Home() {
         mTimerText = new SimpleStringProperty();
         setTimerText(0);
+        mEnding = new AudioClip(getClass().getResource("/sounds/sound-2.mp3").toExternalForm());
     }
 
     public String getTimerText() {
@@ -66,6 +69,7 @@ public class Home {
         }));
         mTimeline.setOnFinished(e -> {
             saveCurrentAttempt();
+            mEnding.play();
             prepareAttempt(mCurrentAttempt.getKind() == AttemptKind.FOCUS ?
                     AttemptKind.BREAK : AttemptKind.FOCUS);
         });
