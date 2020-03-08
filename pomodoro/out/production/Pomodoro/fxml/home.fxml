@@ -11,7 +11,7 @@
       fx:controller="sample.controllers.Home"
       fx:id="container">
     <children>
-        <Label fx:id="title" text="Pomodoro"/>
+        <Label fx:id="title" text="Pomodoros"/>
 
         <Label fx:id="time" text="${controller.timerText}"/>
 
