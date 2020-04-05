@@ -4,7 +4,9 @@ import com.teamtreehouse.jobs.model.Job;
 import com.teamtreehouse.jobs.service.JobService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class App {
 
@@ -24,8 +26,33 @@ public class App {
   }
 
   private static void explore(List<Job> jobs) {
-    printPortlandJobsStream(jobs);
+    getThreeJuniorJobsStream(jobs).forEach(System.out::println);
   }
+
+  private static boolean isJuniorJob(Job job) {
+    String title = job.getTitle().toLowerCase();
+    return title.contains("junior") || title.contains("jr");
+  }
+
+  private static List<Job> getThreeJuniorJobsStream(List<Job> jobs) {
+    return jobs.stream()
+               .filter(App::isJuniorJob)
+               .limit(3)
+               .collect(Collectors.toList());
+  }
+
+   private static List<Job> getThreeJuniorJobsImperatively(List<Job> jobs) {
+    List<Job> juniorJobs = new ArrayList<>();
+    for (Job job : jobs) {
+        if (isJuniorJob(job)) {
+          juniorJobs.add(job);
+          if (juniorJobs.size() >= 3) {
+            break;
+          }
+        }
+    }
+    return juniorJobs;
+   }
 
   private static void printPortlandJobsStream(List<Job> jobs) {
     jobs.stream()
