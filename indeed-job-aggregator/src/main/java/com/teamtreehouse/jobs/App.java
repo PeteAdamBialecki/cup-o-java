@@ -4,10 +4,7 @@ import com.teamtreehouse.jobs.model.Job;
 import com.teamtreehouse.jobs.service.JobService;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,11 +24,14 @@ public class App {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
+  };
 
   private static void explore(List<Job> jobs) {
-    getSnippetWordCountsImperatively(jobs)
-            .forEach((key, value) -> System.out.printf("'%s occurs %d times %n", key, value));
+    System.out.println(
+            jobs.stream()
+                    .map(Job::getCompany)
+                    .max(Comparator.comparingInt(String::length))
+    );
   }
 
   public static Map<String, Long> getSnippetWordCountsStream(List<Job> jobs) {
